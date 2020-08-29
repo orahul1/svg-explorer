@@ -1,38 +1,23 @@
 <script>
-  export let name;
+  import FileUploader from "./Components/FileUploader.svelte";
+  import SvgCollection from "./Components/SvgCollection.svelte";
+  let isShowUploader = true;
+  let files = [];
 </script>
 
-<style lang="scss">
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
-    h1 {
-      color: #ff3e00;
-      text-transform: uppercase;
-      font-size: 4em;
-      font-weight: 100;
-    }
-    p{
-      a{
-        color: green;
-      }
-    }
-  }
 
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
-  }
-</style>
+<!-- Fileuploaders -->
 
-<main>
-  <h1>Hello {name}!</h1>
-  <p>
-    Scss setup is based on
-    <a target="_blank" href="https://medium.com/@sean_27490/svelte-sapper-with-sass-271fff662da9">Medium</a>
-    article
-  </p>
-</main>
+{#if isShowUploader}
+  <FileUploader
+    on:fileList={(data) => {
+      console.log(data)
+      isShowUploader = false;
+    }}/>
+{/if}
+
+<!-- SVG Collection -->
+
+{#if !isShowUploader}
+  <SvgCollection fileList={files} />
+{/if}

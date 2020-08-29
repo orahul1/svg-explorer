@@ -1,0 +1,47 @@
+import "@scss/styles.scss";
+import 'alpinejs';
+
+
+let fileInput = document.querySelectorAll('input');
+let inputFiles = document.getElementById('files-area');
+let inputFolder = document.getElementById('folders-area');
+let fileDetails = [];
+
+inputFiles.addEventListener('click', openFileUploader, false);
+inputFolder.addEventListener('click', openFolderUploader, false);
+
+
+/**
+ * @description Open file uploader 
+ */
+
+function openFileUploader() {
+  document.getElementById('files').click();
+}
+
+/**
+ * @description Open folder uploader 
+ */
+
+function openFolderUploader() {
+  document.getElementById('folders').click();
+}
+
+
+/* Capture all fileuploads */
+
+[].forEach.call(fileInput, function (fileInput) {
+  fileInput.onchange = function (e) {
+    let files = e.target.files;
+    for (let file of files) {
+      const reader = new FileReader();
+      reader.readAsBinaryString(file);
+      reader.fileName = file.name;
+      reader.onload = (event) => {
+        const fileName = event.target.fileName;
+        const content = event.currentTarget.result;
+        fileDetails.push({ fileName, content });
+      };
+    }
+  };
+});
