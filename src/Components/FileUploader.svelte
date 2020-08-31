@@ -17,11 +17,24 @@
       reader.fileName = file.name;
       reader.onload = (event) => {
         const fileName = event.target.fileName;
-        const preview = event.currentTarget.result;
-        fileDetails.push({ fileName, preview });
+        const content = event.currentTarget.result;
+        const fileSize = fileSizeConverter(file);
+        fileDetails.push({ fileName, content,fileSize });
+        dispatch("fileList", fileDetails);
       };
     }
-    dispatch("fileList", { data: fileDetails });
+  }
+
+  function fileSizeConverter(file) {
+    var _size = file.size;
+    var fSExt = new Array("Bytes", "KB", "MB", "GB"),
+      i = 0;
+    while (_size > 900) {
+      _size /= 1024;
+      i++;
+    }
+    var exactSize = Math.round(_size * 100) / 100 + " " + fSExt[i];
+    return exactSize;
   }
 </script>
 

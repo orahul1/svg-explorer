@@ -1,17 +1,67 @@
 <script>
   export let fileName;
-  // export let fileSize;
-  export let preview;
-  console.log(fileName, preview);
+  export let content;
+  export let width;
+  export let height;
+  export let fileSize;
 </script>
 
-
+<style lang="scss">
+  .container {
+    margin-right: 15px;
+    border-radius: 5px;
+    .preview {
+      min-width: 100px;
+      min-height: 100px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      .content {
+        text-align: center;
+        &:focus {
+          outline: none !important;
+        }
+      }
+    }
+    .details {
+      background: rgb(43, 43, 43);
+      color: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      p {
+        margin: 0 0 10px 0;
+        white-space: nowrap;
+      }
+      .edit {
+        cursor: pointer;
+        padding: 7px 20px;
+        border-radius: 5px;
+        color: #fff;
+        background: -webkit-linear-gradient(
+          43deg,
+          #41bbd0 0%,
+          #507ac8 46%,
+          #7970ff 100%
+        );
+        font-size: 1rem;
+        font-weight: bold;
+      }
+    }
+  }
+</style>
 
 <div class="container">
-  <p>from card</p>
-  <!-- <div class="preview" contenteditable="true" bind:innerHTML={preview}/> -->
+  <div class="preview">
+    <div class="content" contenteditable="true" bind:innerHTML={content} />
+  </div>
   <div class="details">
-    <p>{fileName}</p>
-    <!-- <p>{fileSize}</p> -->
+    <p>File Name: {fileName}</p>
+    <!-- <p>Width: {width}</p>
+    <p>Height: {height}</p> -->
+    <p>File Size : {fileSize}</p>
+    <button class="edit">Edit</button>
   </div>
 </div>
