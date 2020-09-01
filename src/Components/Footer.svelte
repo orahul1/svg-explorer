@@ -4,6 +4,22 @@
 
 <style lang="scss">
 footer{
+  a{
+    text-decoration: none;
+            background: -webkit-linear-gradient(
+        43deg,
+        #d0af41 0%,
+        #76c850 46%,
+        #70ff7c 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      img{
+        width: 20px;
+        position: absolute;
+        padding-right: 20px;
+      }
+  }
   p {
     color: #fff;
     text-align: center;
@@ -16,7 +32,7 @@ footer{
 
 <footer>
   <p>
-    Made with <i class="fas fa-heart" /> by <a
+    Made with <i class="fas fa-heart" /> and <a
       href="https://svelte.dev/"
       target="_blank"><svg
         xmlns="http://www.w3.org/2000/svg"
@@ -40,5 +56,6 @@ footer{
           height="308"
           fill="rgba(0, 0, 0, 0)" /></svg>
     </a>
+    by <a target="_blank" href="https://www.linkedin.com/in/rahul-raveendran-582b90143/">Rahul Raveendran</a>
   </p>
 </footer>
