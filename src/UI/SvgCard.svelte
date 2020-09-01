@@ -1,9 +1,10 @@
 <script>
   export let fileName;
   export let content;
-  export let width;
-  export let height;
+  // export let width;
+  // export let height;
   export let fileSize;
+  export let preview;
 </script>
 
 <style lang="scss">
@@ -11,14 +12,13 @@
     margin-right: 15px;
     border-radius: 5px;
     .preview {
-      min-width: 100px;
-      min-height: 100px;
       background: #fff;
       display: flex;
       flex-direction: column;
       justify-content: center;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
+      padding: 10px;
       .content {
         text-align: center;
         &:focus {
@@ -33,7 +33,6 @@
       border-radius: 5px;
       p {
         margin: 0 0 10px 0;
-        white-space: nowrap;
       }
       .edit {
         cursor: pointer;
@@ -55,13 +54,14 @@
 
 <div class="container">
   <div class="preview">
-    <div class="content" contenteditable="true" bind:innerHTML={content} />
+  <img src="{preview}" alt="{fileName}">
+    <!-- <div class="content" contenteditable="true" bind:innerHTML={content} /> -->
   </div>
   <div class="details">
     <p>File Name: {fileName}</p>
     <!-- <p>Width: {width}</p>
     <p>Height: {height}</p> -->
     <p>File Size : {fileSize}</p>
-    <button class="edit">Edit</button>
+    <!-- <button class="edit">Edit</button> -->
   </div>
 </div>

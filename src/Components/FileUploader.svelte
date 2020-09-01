@@ -12,18 +12,26 @@
   function handleFileUpload(e) {
     let files = e.detail.target.files;
     for (let file of files) {
-      const reader = new FileReader();
-      reader.readAsBinaryString(file);
-      reader.fileName = file.name;
-      reader.onload = (event) => {
-        const fileName = event.target.fileName;
-        const content = event.currentTarget.result;
-        const fileSize = fileSizeConverter(file);
-        fileDetails.push({ fileName, content,fileSize });
-        dispatch("fileList", fileDetails);
-      };
+      if (file.type == "image/svg+xml") {
+        const reader = new FileReader();
+        reader.readAsBinaryString(file);
+        reader.fileName = file.name;
+        reader.onload = (event) => {
+          const fileName = event.target.fileName;
+          const content = event.currentTarget.result;
+          const fileSize = fileSizeConverter(file);
+          const preview = window.URL.createObjectURL(file);
+          fileDetails.push({ fileName, content, fileSize, preview });
+          dispatch("fileList", fileDetails);
+        };
+      }
     }
   }
+
+  /**
+   * @description Convert file based on size
+   * @param { file } each uploaded file
+   */
 
   function fileSizeConverter(file) {
     var _size = file.size;
@@ -37,10 +45,6 @@
     return exactSize;
   }
 </script>
-
-<style lang="scss">
-
-</style>
 
 <section class="container _flex">
   <MultipleFileUploader on:fileUpload={handleFileUpload} />
