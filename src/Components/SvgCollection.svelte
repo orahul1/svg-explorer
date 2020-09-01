@@ -2,6 +2,7 @@
   import SvgCard from "../UI/SvgCard.svelte";
   import Masonry from "svelte-masonry/Masonry.svelte";
   export let fileCollection;
+  export let selectedColor;
 </script>
 
 <style lang="scss">
@@ -12,8 +13,8 @@
 
 <div class="container">
   <Masonry gridGap={'0.75rem'}>
-    {#each fileCollection as { fileName, content, fileSize, preview }}
-      <SvgCard {fileName} {content} {fileSize} {preview} />
+    {#each fileCollection as { fileName, fileSize, preview }}
+      <SvgCard {fileName} {fileSize} {preview} {selectedColor}/>
     {/each}
   </Masonry>
 </div>

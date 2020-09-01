@@ -23,6 +23,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    cursor: pointer;
     input {
       display: none;
     }
@@ -42,7 +43,6 @@
     p {
       font-size: 3rem;
       font-weight: bold;
-      cursor: pointer;
       background: -webkit-linear-gradient(
         43deg,
         #69d041 0%,

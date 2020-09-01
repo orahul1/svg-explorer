@@ -4,11 +4,12 @@
   import Footer from './Components/Footer.svelte';
   import Header from './Components/Header.svelte';
   let isShowUploader = true;
+  let selectedColor;
   let fileCollection = [];
 </script>
 
 <!-- Header -->
-<Header/>
+<Header showColors={!isShowUploader} on:changeColor={(data) => {selectedColor = data.detail}}/>
 
 <!-- Fileuploaders -->
 
@@ -23,7 +24,7 @@
 <!-- SVG Collection -->
 
 {#if !isShowUploader}
-  <SvgCollection {fileCollection} />
+  <SvgCollection {fileCollection} {selectedColor}/>
 {/if}
 
 

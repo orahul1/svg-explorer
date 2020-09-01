@@ -1,10 +1,15 @@
 <script>
   export let fileName;
-  export let content;
+  export let selectedColor;
+  // export let content;
   // export let width;
   // export let height;
   export let fileSize;
   export let preview;
+
+  function changeBgColor(color) {
+    color == "black" ? (selectedColor = "#000") : (selectedColor = "#fff");
+  }
 </script>
 
 <style lang="scss">
@@ -12,7 +17,6 @@
     margin-right: 15px;
     border-radius: 5px;
     .preview {
-      background: #fff;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -31,6 +35,7 @@
       color: #fff;
       padding: 15px;
       border-radius: 5px;
+      position: relative;
       p {
         margin: 0 0 10px 0;
       }
@@ -49,12 +54,37 @@
         font-weight: bold;
       }
     }
+    .colors {
+      margin: 5px 0 0 5px;
+      position: absolute;
+      .common {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .black {
+        background: #000;
+        margin-right: 5px;
+      }
+      .white {
+        background: #fff;
+      }
+    }
   }
 </style>
 
 <div class="container">
-  <div class="preview">
-  <img src="{preview}" alt="{fileName}">
+  <div class="colors _flex">
+    <div
+      class="black common"
+      on:click|preventDefault={() => changeBgColor('black')} />
+    <div
+      class="white common"
+      on:click|preventDefault={() => changeBgColor('white')} />
+  </div>
+  <div class="preview" style="background : {selectedColor}">
+    <img src={preview} alt={fileName} />
     <!-- <div class="content" contenteditable="true" bind:innerHTML={content} /> -->
   </div>
   <div class="details">
