@@ -83,6 +83,7 @@
       class="white common"
       on:click|preventDefault={() => changeBgColor('white')} />
   </div>
+
   <div class="preview" style="background : {selectedColor}">
     <img src={preview} alt={fileName} />
     <!-- <div class="content" contenteditable="true" bind:innerHTML={content} /> -->

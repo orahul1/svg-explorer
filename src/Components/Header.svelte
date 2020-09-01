@@ -49,7 +49,8 @@
     }
     .colors {
       position: absolute;
-      right: 150px;
+      top: 3px;
+      right: 75px;
       .common {
         width: 30px;
         height: 30px;
@@ -58,13 +59,12 @@
       }
       .black {
         background: #000;
-        border: 0.5px solid #fff;
+        border: 0.1px solid #fff;
         margin-right: 5px;
       }
       .white {
         background: #fff;
-        border: 1px solid #000;
-        border: 0.5px solid #fff;
+        border: 0.1px solid #000;
       }
     }
   }
